@@ -1,6 +1,8 @@
 {
   "name": "react-radiogroup",
   "version": "0.0.0",
+  "author": "chenglou <chenglou92@gmail.com>",
+  "description": "Finally, radio groups for DOM.",
   "main": "react-radiogroup.js",
   "ignore": [
     "**/.*",
@@ -9,7 +11,16 @@
     "test",
     "tests"
   ],
+  "keywords": [
+    "facebook",
+    "react",
+    "radio",
+    "group",
+    "dom",
+    "input"
+  ],
   "dependencies": {
     "react": "~0.4.0"
-  }
+  },
+  "license": "MIT"
 }

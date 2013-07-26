@@ -1,6 +1,28 @@
-# React-treeview
+# [React](http://facebook.github.io/react/)-radiogroup
 
-Easy, light, flexible tree view made with [React](http://facebook.github.io/react/).
+README under construction! Please come back later =)
+
+
+
+```html
+<RadioGroup name="fruits" checkedValue="orange" ref="radioGroup">
+  <input type="radio" value="apple">Apple
+  <input type="radio" value="orange">Orange
+  <input type="radio" value="watermelon">Watermelon
+</RadioGroup>
+```
+
+Makes you wonder why this isn't in DOM in the first place.
+
+Now wasn't that easy? Here's how you can style the tree (also check out [index.css](https://github.com/chenglou/react-treeview/blob/master/index.css), it's so short it didn't warrant a minified version):
+
+```
+whole tree is a ul.treeview
+
+div.treenode-arrow ->   ▾ Apple              <- div.treenode-item    
+                            FileMaker                        whole node is
+                            Braeburn Capital                 a li.treenode
+```
 
 ## install
 
@@ -58,54 +80,7 @@ Where, inside each object of the array:
 - `children` is an array of more nodes, taking the exact format as the whole outside array. A tree can be arbitrarily deep.
 
 ## Example
-[Live demo with a dash of CSS](http://chenglou.github.io/react-treeview/)
 
-```html
-/**
-* @jsx React.DOM
-*/
-var data = [
-  {
-    displayNode: <span>Apple</span>,
-    children: [
-      {displayNode: <i>FileMaker</i>},
-      {displayNode: <i>Anobit</i>},
-      {displayNode: <i>Braeburn Capital</i>}
-    ]
-  },
-  {
-    displayNode: <span>Facebook</span>,
-    canToggle: false,
-    children: [
-      {displayNode: <i>Instagram</i>},
-    ]
-  }
-];
-
-var companies = <TreeView source={data} className="company-tree"/>;
-React.renderComponent(companies, document.body);
-
-setTimeout(function() {
-  // let's remove Anobit three seconds after the initial display
-  data[0].children.splice(1, 1);
-  // the magic of React will only re-render what's changed
-  React.renderComponent(companies, document.body);
-}, 3000);
-```
-
-Now wasn't that easy? Here's how you can style the tree (also check out [index.css](https://github.com/chenglou/react-treeview/blob/master/index.css), it's so short it didn't warrant a minified version):
-
-```
-whole tree is a ul.treeview
-
-div.treenode-arrow ->   ▾ Apple              <- div.treenode-item    
-                            FileMaker                        whole node is
-                            Braeburn Capital                 a li.treenode
-```
-
-That's it. Since you can attach any component as child, the styling is flexible and entirely up to you.
-
-Check out the [examples](https://github.com/chenglou/react-treeview/tree/master/examples) folder for two sophisticated demos with plenty of explanations!
 
 ## License
 

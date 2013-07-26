@@ -2,7 +2,7 @@
 * @jsx React.DOM
 */
 
-var RadioGroup = React.createClass({
+var RadioGroup = React.createClass({displayName: 'RadioGroup',
   componentDidMount: function() {
     this.setCheckedRadio();
   },
@@ -17,9 +17,9 @@ var RadioGroup = React.createClass({
     }, this);
 
     return this.transferPropsTo(
-      <div onChange={this.handleChange}>
-        {this.props.children}
-      </div>
+      React.DOM.div( {onChange:this.handleChange}, 
+        this.props.children
+      )
     );
   },
 
@@ -97,51 +97,50 @@ var RadioGroup = React.createClass({
   }
 });
 
-var Demo = React.createClass({
-  render: function() {
-    return (
-      <form>
+// var Demo = React.createClass({
+//   render: function() {
+//     return (
+//       <div>
 
-        <RadioGroup name="fruits" onChange={this.moreDemo} checkedValue="orange" ref="fruitsGroup">
-          <input type="radio" value="apple"/>Apple
-          <input type="radio" value="orange"/>Orange
-          <input type="radio" value="watermelon"/>Watermelon
-        </RadioGroup>
+//         <RadioGroup name="fruits" onChange={this.moreDemo} checkedValue="orange" ref="fruitsGroup">
+//           <input type="radio" value="apple"/>Apple
+//           <input type="radio" value="orange"/>Orange
+//           <input type="radio" value="watermelon"/>Watermelon
+//         </RadioGroup>
 
-        <RadioGroup name="veggies" onChange={this.moreDemo} ref="veggiesGroup">
-          <label>
-            <input type="radio" value="celery"/>Celery
-          </label>
-          <label>
-            <input type="radio" value="orange"/>Potato
-          </label>
-          <label>
-            <input type="radio" value="broccoli"/>Broccoli
-          </label>
-        </RadioGroup>
+//         <RadioGroup name="veggies" onChange={this.moreDemo} ref="veggiesGroup">
+//           <label>
+//             <input type="radio" value="celery"/>Celery
+//           </label>
+//           <label>
+//             <input type="radio" value="orange"/>Potato
+//           </label>
+//           <label>
+//             <input type="radio" value="broccoli"/>Broccoli
+//           </label>
+//         </RadioGroup>
 
 
-        <RadioGroup name="people" onChange={this.moreDemo} checkedValue="SJ" ref="peopleGroup">
-          <div>
-            <input type="radio" value="SJ"/>Steve Jobs
-            <input type="radio" value="MZ"/>Mark Zukerberg
-            <input type="radio" value="SB"/>Steve Ballmer
-          </div>
-        </RadioGroup>
+//         <RadioGroup name="people" onChange={this.moreDemo} checkedValue="SJ" ref="peopleGroup">
+//           <div>
+//             <input type="radio" value="SJ"/>Steve Jobs
+//             <input type="radio" value="MZ"/>Mark Zukerberg
+//             <input type="radio" value="SB"/>Steve Ballmer
+//           </div>
+//         </RadioGroup>
 
-      </form>
-    );
-  },
+//       </div>
+//     );
+//   },
 
-  moreDemo: function() {
-    var selectedFruit = this.refs.fruitsGroup.getCheckedValue();
-    var selectedVeggy = this.refs.veggiesGroup.getCheckedValue();
-    var selectedPerson = this.refs.peopleGroup.getCheckedValue();
-    console.log(selectedFruit, selectedVeggy, selectedPerson);
-  }
-});
+//   moreDemo: function() {
+//     var selectedFruit = this.refs.fruitsGroup.getCheckedValue();
+//     var selectedVeggy = this.refs.veggiesGroup.getCheckedValue();
+//     var selectedPerson = this.refs.peopleGroup.getCheckedValue();
+//     console.log(selectedFruit, selectedVeggy, selectedPerson);
+//   }
+// });
 
-var demo = <Demo/>;
+// var demo = <Demo/>;
 
-React.renderComponent(demo, document.body)
-
+// React.renderComponent(demo, document.body)
