@@ -1,0 +1,15 @@
+{
+  "name": "react-radiogroup",
+  "version": "0.0.0",
+  "main": "react-radiogroup.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.4.0"
+  }
+}
