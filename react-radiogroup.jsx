@@ -11,7 +11,6 @@ var RadioGroup = React.createClass({
   componentDidUpdate: function() {
     this.setRadioNames();
     this.setCheckedRadio();
-    console.log('yeah');
   },
 
   render: function() {
@@ -42,14 +41,12 @@ var RadioGroup = React.createClass({
     // the markup of the radio by adding the `checked` attribute upon clicking,
     // we do it manually here. The other solution would be setting a state and
     // render accordingly, but less state = better
-    var value = forcedValue ? forcedValue : this.props.value;
+    var valueToChangeTo = forcedValue ? forcedValue : this.props.value;
     var $radios = this.getRadios();
     for (var i = 0, length = $radios.length; i < length; i++) {
       var $radio = $radios[i];
-      if ($radio.getAttribute('value') === value) {
-        $radio.setAttribute('checked', true);
-      } else {
-        $radio.removeAttribute('checked');
+      if ($radio.value === valueToChangeTo) {
+        $radio.checked = true;
       }
     }
   },
@@ -57,8 +54,8 @@ var RadioGroup = React.createClass({
   getCheckedValue: function() {
     var $radios = this.getRadios();
     for (var i = 0, length = $radios.length; i < length; i++) {
-      if ($radios[i].getAttribute('checked')) {
-        return $radios[i].getAttribute('value');
+      if ($radios[i].checked) {
+        return $radios[i].value;
       }
     }
 
@@ -77,10 +74,10 @@ var Demo = React.createClass({
   },
   componentDidMount: function() {
     setInterval(function() {
-      this.setState({val: Math.random() > .5 ? 'orange' : 'apple'}, function() {
+      this.setState({val: Math.random() > .5 ? 'orange' : 'watermelon'}, function() {
         console.log(this.refs.fruitsGroup.getCheckedValue(), this.state.val);
       }.bind(this));
-    }.bind(this), 1000);
+    }.bind(this), 1000000);
   },
 
   render: function() {
