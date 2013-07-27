@@ -4,18 +4,17 @@
 
 var RadioGroup = React.createClass({
   componentDidMount: function() {
+    this.setRadioNames();
     this.setCheckedRadio();
   },
 
   componentDidUpdate: function() {
+    this.setRadioNames();
     this.setCheckedRadio();
+    console.log('yeah');
   },
 
   render: function() {
-    this.getRadios().forEach(function(radio) {
-      radio.props.name = this.props.name;
-    }, this);
-
     return this.transferPropsTo(
       <div onChange={this.handleChange}>
         {this.props.children}
@@ -23,46 +22,17 @@ var RadioGroup = React.createClass({
     );
   },
 
+  setRadioNames: function() {
+    // stay DRY and don't put the same `name` on all radios manually. Put it on
+    // the tag and it'll be done here
+    var $radios = this.getRadios();
+    for (var i = 0, length = $radios.length; i < length; i++) {
+      $radios[i].setAttribute('name', this.props.name);
+    }
+  },
+
   getRadios: function() {
-    var children = this.props.children;
-    if (!Array.isArray(children)) {
-      // single child isn't returned as an array
-      children = [children];
-    }
-
-    var radios = children.map(function(child) {
-      return this.extractNestedRadioFrom(child);
-    }, this)
-
-    return this.flatten(radios, []);
-  },
-
-  extractNestedRadioFrom: function(node) {
-    if (!node.props) {
-      return [];
-    }
-
-    if (node.props.type === 'radio') {
-      return node;
-    }
-
-    if (node.props.children) {
-      return node.props.children.map(function(child) {
-        return this.extractNestedRadioFrom(child);
-      }, this);
-    }
-  },
-
-  flatten: function(array, output) {
-    array.forEach(function(item) {
-      if (Array.isArray(item)) {
-        this.flatten(item, output);
-      } else {
-        output.push(item);
-      }
-    }, this);
-
-    return output;
+    return this.getDOMNode().querySelectorAll('input[type="radio"]');
   },
 
   setCheckedRadio: function(forcedValue) {
@@ -72,23 +42,27 @@ var RadioGroup = React.createClass({
     // the markup of the radio by adding the `checked` attribute upon clicking,
     // we do it manually here. The other solution would be setting a state and
     // render accordingly, but less state = better
-    var value = forcedValue ? forcedValue : this.props.checkedValue;
-    this.getRadios().forEach(function(radio) {
-      var $radio = radio.getDOMNode();
-      if ($radio.value === value) {
-        $radio.setAttribute('checked', 'true');
+    var value = forcedValue ? forcedValue : this.props.value;
+    var $radios = this.getRadios();
+    for (var i = 0, length = $radios.length; i < length; i++) {
+      var $radio = $radios[i];
+      if ($radio.getAttribute('value') === value) {
+        $radio.setAttribute('checked', true);
       } else {
         $radio.removeAttribute('checked');
       }
-    }, this);
+    }
   },
 
   getCheckedValue: function() {
-    var checkedRadio = this.getRadios().filter(function(radio) {
-      return radio.getDOMNode().getAttribute('checked') === 'true';
-    });
+    var $radios = this.getRadios();
+    for (var i = 0, length = $radios.length; i < length; i++) {
+      if ($radios[i].getAttribute('checked')) {
+        return $radios[i].getAttribute('value');
+      }
+    }
 
-    return checkedRadio[0] ? checkedRadio[0].props.value : null;
+    return null;
   },
 
   handleChange: function(event) {
@@ -98,11 +72,22 @@ var RadioGroup = React.createClass({
 });
 
 var Demo = React.createClass({
+  getInitialState: function() {
+    return {val: 'apple'};
+  },
+  componentDidMount: function() {
+    setInterval(function() {
+      this.setState({val: Math.random() > .5 ? 'orange' : 'apple'}, function() {
+        console.log(this.refs.fruitsGroup.getCheckedValue(), this.state.val);
+      }.bind(this));
+    }.bind(this), 1000);
+  },
+
   render: function() {
     return (
-      <form>
+      <div>
 
-        <RadioGroup name="fruits" onChange={this.moreDemo} checkedValue="orange" ref="fruitsGroup">
+        <RadioGroup name="fruits" onChange={this.moreDemo} value={this.state.val} ref="fruitsGroup">
           <input type="radio" value="apple"/>Apple
           <input type="radio" value="orange"/>Orange
           <input type="radio" value="watermelon"/>Watermelon
@@ -113,15 +98,14 @@ var Demo = React.createClass({
             <input type="radio" value="celery"/>Celery
           </label>
           <label>
-            <input type="radio" value="orange"/>Potato
+            <input type="radio" value="potato"/>Potato
           </label>
           <label>
             <input type="radio" value="broccoli"/>Broccoli
           </label>
         </RadioGroup>
 
-
-        <RadioGroup name="people" onChange={this.moreDemo} checkedValue="SJ" ref="peopleGroup">
+        <RadioGroup name="people" onChange={this.moreDemo} value="SJ" ref="peopleGroup">
           <div>
             <input type="radio" value="SJ"/>Steve Jobs
             <input type="radio" value="MZ"/>Mark Zukerberg
@@ -129,7 +113,7 @@ var Demo = React.createClass({
           </div>
         </RadioGroup>
 
-      </form>
+      </div>
     );
   },
 
