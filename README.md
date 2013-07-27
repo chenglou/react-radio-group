@@ -25,8 +25,10 @@ Listen for changes, get the new value as intuitively as possible:
 
 ```html
 <RadioGroup name="fruit" value="orange" ref="fruitsGroup" onChange={this.handleChange}>
-// some JavaScript a bit later...
+// further...
+
 this.refs.fruitsGroup.getCheckedValue(); // => whatever's currently checked
+// handleChange is also passed the new value
 ```
 
 That's it for the API! See below for a complete example.
@@ -45,7 +47,7 @@ Or simply drop the script somewhere on your page (after React of course):
 
 ## Example
 
-Demo's almost as long as the whole [source code](https://github.com/chenglou/react-treeview/tree/master/react-radiogroup.jsx).
+Demo's almost as long as the whole [source code](https://github.com/chenglou/react-radiogroup/blob/master/react-radiogroup.jsx).
 
 ```html
 /**
@@ -88,9 +90,9 @@ var Demo = React.createClass({
     );
   },
 
-  handleChange: function() {
+  handleChange: function(value) {
     // will return the currently selected radio's value, or null if none
-    var selectedVeggy = this.refs.veggiesGroup.getCheckedValue();
+    // alternatively, use the passed parameter `value`    var selectedVeggy = this.refs.veggiesGroup.getCheckedValue();
   }
 });
 

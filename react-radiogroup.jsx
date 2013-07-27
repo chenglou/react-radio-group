@@ -63,7 +63,7 @@ var RadioGroup = React.createClass({
 
   handleChange: function(event) {
     this.setCheckedRadio(event.target.value);
-    this.props.onChange && this.props.onChange();
+    this.props.onChange && this.props.onChange(event.target.value);
   }
 });
 
