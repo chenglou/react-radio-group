@@ -28,7 +28,8 @@ Listen for changes, get the new value as intuitively as possible:
 // further...
 
 this.refs.fruitsGroup.getCheckedValue(); // => whatever's currently checked
-// handleChange is also passed the new value
+// handleChange is also passed the native onChange event, whose value
+// resides in event.target.value (see example below)
 ```
 
 That's it for the API! See below for a complete example.
@@ -90,9 +91,11 @@ var Demo = React.createClass({
     );
   },
 
-  handleChange: function(value) {
+  handleChange: function(event) {
     // will return the currently selected radio's value, or null if none
-    // alternatively, use the passed parameter `value`    var selectedVeggy = this.refs.veggiesGroup.getCheckedValue();
+    // alternatively, use the passed parameter `event`
+    var selectedVeggy = this.refs.veggiesGroup.getCheckedValue();
+    var sameVeggy = event.target.value;
   }
 });
 

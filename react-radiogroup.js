@@ -15,7 +15,7 @@ var RadioGroup = React.createClass({displayName: 'RadioGroup',
 
   render: function() {
     return this.transferPropsTo(
-      React.DOM.div( {onChange:this.handleChange}, 
+      React.DOM.div( {onChange:this.props.onChange}, 
         this.props.children
       )
     );
@@ -34,16 +34,16 @@ var RadioGroup = React.createClass({displayName: 'RadioGroup',
     return this.getDOMNode().querySelectorAll('input[type="radio"]');
   },
 
-  setCheckedRadio: function(forcedValue) {
-    // by default, check the radio whose value is provided by `value` from
-    // parent. This method also doubles as a hard radio setter if forcedValue is
-    // passed (see `handleChange`).
-    var valueToChangeTo = forcedValue ? forcedValue : this.props.value;
+  setCheckedRadio: function() {
     var $radios = this.getRadios();
 
     for (var i = 0, length = $radios.length; i < length; i++) {
       var $radio = $radios[i];
-      if ($radio.value === valueToChangeTo) {
+
+      // intentionally use implicit conversion for those who accidentally used,
+      // say, `valueToChange` of 1 (integer) to compare it with `value` of "1"
+      // (auto conversion to valid html value from React)
+      if ($radio.value == this.props.value) {
         $radio.checked = true;
       }
     }
@@ -59,10 +59,5 @@ var RadioGroup = React.createClass({displayName: 'RadioGroup',
     }
 
     return null;
-  },
-
-  handleChange: function(event) {
-    this.setCheckedRadio(event.target.value);
-    this.props.onChange && this.props.onChange();
   }
 });
