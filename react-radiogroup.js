@@ -3,6 +3,11 @@
 */
 
 var RadioGroup = React.createClass({displayName: 'RadioGroup',
+  getInitialState: function() {
+    // check the first block of comment in `setCheckedRadio`
+    return {defaultValue: this.props.defaultValue};
+  },
+
   componentDidMount: function() {
     this.setRadioNames();
     this.setCheckedRadio();
@@ -36,6 +41,14 @@ var RadioGroup = React.createClass({displayName: 'RadioGroup',
 
   setCheckedRadio: function() {
     var $radios = this.getRadios();
+    // if `value` is passed from parent, always use that value. This is similar
+    // to React's controlled component. If `defaultValue` is used instead,
+    // subsequent updates to defaultValue are ignored. Note: when `defaultValue`
+    // and `value` are both passed, the latter takes precedence, just like in
+    // a controlled component
+    var destinationValue = this.props.value != null
+      ? this.props.value
+      : this.state.defaultValue;
 
     for (var i = 0, length = $radios.length; i < length; i++) {
       var $radio = $radios[i];
@@ -43,7 +56,7 @@ var RadioGroup = React.createClass({displayName: 'RadioGroup',
       // intentionally use implicit conversion for those who accidentally used,
       // say, `valueToChange` of 1 (integer) to compare it with `value` of "1"
       // (auto conversion to valid html value from React)
-      if ($radio.value == this.props.value) {
+      if ($radio.value == destinationValue) {
         $radio.checked = true;
       }
     }

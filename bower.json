@@ -1,6 +1,6 @@
 {
   "name": "react-radiogroup",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "chenglou <chenglou92@gmail.com>",
   "description": "Sensible radio groups manipulation for DOM.",
   "main": "react-radiogroup.js",
