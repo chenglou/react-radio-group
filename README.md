@@ -1,4 +1,4 @@
-# [React](http://facebook.github.io/react/)-radiogroup
+# [React](http://facebook.github.io/react/)-radio-group
 
 This is your average radios group:
 
@@ -37,13 +37,13 @@ That's it for the API! See below for a complete example.
 ## install
 
 ```sh
-bower install react-radiogroup
+bower install react-radio-group
 ```
 
 Or simply drop the script somewhere on your page (after React of course):
 
 ```html
-<script src="path/to/react-radiogroup.js"></script>
+<script src="path/to/react-radio-group.js"></script>
 ```
 
 ## Example

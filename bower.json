@@ -1,9 +1,9 @@
 {
-  "name": "react-radiogroup",
-  "version": "0.1.1",
+  "name": "react-radio-group",
+  "version": "0.1.2",
   "author": "chenglou <chenglou92@gmail.com>",
   "description": "Sensible radio groups manipulation for DOM.",
-  "main": "react-radiogroup.js",
+  "main": "react-radio-group.js",
   "ignore": [
     "**/.*",
     "node_modules",
