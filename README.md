@@ -1,4 +1,4 @@
-# [React](http://facebook.github.io/react/)-radiogroup
+# [React](http://facebook.github.io/react/)-radio-group
 
 This is your average radios group:
 
@@ -11,7 +11,7 @@ This is your average radios group:
 ```
 
 Repetitive, hard to manipulate and easily desynchronized.
-Lift up the `name` and give it an initial checked value, and optionally remove the form tag:
+Lift up `name`, give the group an initial checked value, and optionally remove the form tag:
 
 ```html
 <RadioGroup name="fruit" value="orange">
@@ -34,16 +34,16 @@ this.refs.fruitsGroup.getCheckedValue(); // => whatever's currently checked
 
 That's it for the API! See below for a complete example.
 
-## install
+## Install
 
 ```sh
-bower install react-radiogroup
+bower install react-radio-group
 ```
 
-Or simply drop the script somewhere on your page (after React of course):
+Simply drop the script somewhere on your page (after React of course):
 
 ```html
-<script src="path/to/react-radiogroup.js"></script>
+<script src="path/to/react-radio-group.js"></script>
 ```
 
 ## Example
