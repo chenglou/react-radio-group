@@ -4,9 +4,9 @@ This is your average radios group:
 
 ```html
 <form>
-  <input type="radio" name="fruit" value="apple">Apple
-  <input type="radio" name="fruit" value="orange">Orange
-  <input type="radio" name="fruit" value="watermelon">Watermelon
+  <input type="radio" name="fruit" value="apple" />Apple
+  <input type="radio" name="fruit" value="orange" />Orange
+  <input type="radio" name="fruit" value="watermelon" />Watermelon
 </form>
 ```
 
@@ -15,9 +15,9 @@ Lift up `name`, give the group an initial checked value, and optionally remove t
 
 ```html
 <RadioGroup name="fruit" value="orange">
-  <input type="radio" value="apple">Apple
-  <input type="radio" value="orange">Orange
-  <input type="radio" value="watermelon">Watermelon
+  <input type="radio" value="apple" />Apple
+  <input type="radio" value="orange" />Orange
+  <input type="radio" value="watermelon" />Watermelon
 </RadioGroup>
 ```
 
