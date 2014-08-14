@@ -22,7 +22,6 @@
          * @returns {{value: *}}
          */
         getInitialState: function() {
-            // modifying the prop value of this component will not change the state of RadioGroup
             return {
                 value : this.props.value
             }
@@ -84,7 +83,18 @@
 
             return child;
         },
+        /**
+         * When updating the value property, keep the state in check
+         * @returns {{value: *}}
+         */
+        componentWillReceiveProps: function(nextProps) {
+            this.setState({
+                value: nextProps.value
+            });
+        },
         render: function () {
+
+            console.log(this.props.value, this.state.value)
             var children = React.Children.map(this.props.children, this.findRadio, this);
 
             return (
