@@ -62,7 +62,7 @@ var Demo = React.createClass({
   componentDidMount: function() {
     // change the selected radio to "Potato" in one second
     setTimeout(function() {
-      this.refs.veggiesGroup.setState({value: 'potato'});
+      this.setState({value: 'potato'});
     }.bind(this), 1000);
   },
 
