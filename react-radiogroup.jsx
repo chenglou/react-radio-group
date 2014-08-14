@@ -94,7 +94,6 @@
         },
         render: function () {
 
-            console.log(this.props.value, this.state.value)
             var children = React.Children.map(this.props.children, this.findRadio, this);
 
             return (
