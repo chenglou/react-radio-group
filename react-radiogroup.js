@@ -1,76 +1,106 @@
-/**
-* @jsx React.DOM
-*/
-
-var RadioGroup = React.createClass({displayName: 'RadioGroup',
-  getInitialState: function() {
-    // check the first block of comment in `setCheckedRadio`
-    return {defaultValue: this.props.defaultValue};
-  },
-
-  componentDidMount: function() {
-    this.setRadioNames();
-    this.setCheckedRadio();
-  },
-
-  componentDidUpdate: function() {
-    this.setRadioNames();
-    this.setCheckedRadio();
-  },
-
-  render: function() {
-    return this.transferPropsTo(
-      React.DOM.div( {onChange:this.props.onChange}, 
-        this.props.children
-      )
-    );
-  },
-
-  setRadioNames: function() {
-    // stay DRY and don't put the same `name` on all radios manually. Put it on
-    // the tag and it'll be done here
-    var $radios = this.getRadios();
-    for (var i = 0, length = $radios.length; i < length; i++) {
-      $radios[i].setAttribute('name', this.props.name);
+/** @jsx React.DOM */
+(function (name, definition){
+    if (typeof define === 'function'){ // AMD
+        define(definition);
+    } else if (typeof module !== 'undefined' && module.exports) { // Node.js
+        module.exports = definition();
+    } else { // Browser
+        var theModule = definition(), global = this, old = global[name];
+        theModule.noConflict = function () {
+            global[name] = old;
+            return theModule;
+        };
+        global[name] = theModule;
     }
-  },
+})('RadioGroup', function () {
 
-  getRadios: function() {
-    return this.getDOMNode().querySelectorAll('input[type="radio"]');
-  },
+    // return the module's API
+    return React.createClass({
+        displayName: 'RadioGroup',
+        /**
+         * Sets the initial value state based on the property value
+         * @returns {{value: *}}
+         */
+        getInitialState: function() {
+            return {
+                value : this.props.value
+            }
+        },
+        /**
+         * @returns {string}
+         */
+        getCheckedValue: function() {
+            return this.state.value;
+        },
+        /**
+         * Event listener bound to child input[type=radio]
+         * @param value
+         * @param e
+         */
+        onChange: function(value, e) {
+            this.setState({value: value }, (function() {
+                this.props.onChange && this.props.onChange(e)
+            }).bind(this));
 
-  setCheckedRadio: function() {
-    var $radios = this.getRadios();
-    // if `value` is passed from parent, always use that value. This is similar
-    // to React's controlled component. If `defaultValue` is used instead,
-    // subsequent updates to defaultValue are ignored. Note: when `defaultValue`
-    // and `value` are both passed, the latter takes precedence, just like in
-    // a controlled component
-    var destinationValue = this.props.value != null
-      ? this.props.value
-      : this.state.defaultValue;
+            e.stopPropagation();
+        },
+        /**
+         * Searches child.props.children for a React.DOM.input.type
+         * @param child
+         * @returns {*}
+         */
+        findRadio: function(child) {
+            if(child.type === React.DOM.input.type && child.props.type === 'radio') {
+                child = this.cloneRadio(child);
+            } else {
+                if(child.props.children) {
+                    child = React.addons.cloneWithProps(child, {
+                        children: React.Children.map(child.props.children, this.findRadio, this)
+                    });
+                }
+            }
+            return child;
+        },
+        /**
+         * Clones a input[type=radio] and sets the checked property based on this.state.value
+         * @param child
+         * @returns {*}
+         */
+        cloneRadio: function(child) {
+            var newProps = {};
 
-    for (var i = 0, length = $radios.length; i < length; i++) {
-      var $radio = $radios[i];
+            // dry propagate the name property to the child radio
+            newProps.name = this.props.name;
 
-      // intentionally use implicit conversion for those who accidentally used,
-      // say, `valueToChange` of 1 (integer) to compare it with `value` of "1"
-      // (auto conversion to valid html value from React)
-      if ($radio.value == destinationValue) {
-        $radio.checked = true;
-      }
-    }
-  },
+            if(child.props.value == this.state.value) {
+                newProps.checked = true;
+            }
 
-  getCheckedValue: function() {
-    var $radios = this.getRadios();
+            newProps.onChange = this.onChange.bind(this, child.props.value);
+            newProps.required = this.props.required || 'false';
 
-    for (var i = 0, length = $radios.length; i < length; i++) {
-      if ($radios[i].checked) {
-        return $radios[i].value;
-      }
-    }
+            child = React.addons.cloneWithProps(child, newProps);
 
-    return null;
-  }
+            return child;
+        },
+        /**
+         * When updating the value property, keep the state in check
+         * @returns {{value: *}}
+         */
+        componentWillReceiveProps: function(nextProps) {
+            this.setState({
+                value: nextProps.value
+            });
+        },
+        render: function () {
+
+            var children = React.Children.map(this.props.children, this.findRadio, this);
+
+            return (
+                React.DOM.div(null, 
+                    children
+                )
+                );
+        }
+    });
 });
