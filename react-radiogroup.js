@@ -19,8 +19,7 @@ var RadioGroup = React.createClass({displayName: 'RadioGroup',
   },
 
   render: function() {
-    return this.transferPropsTo(
-      React.DOM.div( {onChange:this.props.onChange}, 
+    return (React.createElement('div', {onChange: this.props.onChange},
         this.props.children
       )
     );
