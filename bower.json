@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "author": "chenglou <chenglou92@gmail.com>",
   "description": "Sensible radio groups manipulation for DOM.",
-  "main": "react-radio-group.js",
+  "main": "react-radiogroup.js",
   "ignore": [
     "**/.*",
     "node_modules",
