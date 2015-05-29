@@ -104,4 +104,4 @@ React.renderComponent(<Demo/>, document.body);
 
 ## License
 
-MIT.
+[MIT](./LICENSE)
