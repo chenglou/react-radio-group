@@ -1,5 +1,9 @@
 # [React](http://facebook.github.io/react/)-radio-group
 
+```
+npm install react-radio-group
+```
+
 This is your average radio buttons group:
 
 ```js
@@ -18,7 +22,7 @@ A few problems:
 Here's a better version (full example [here](https://github.com/chenglou/react-radio-group/blob/5019ce724e4bb8c9aca35c11c20f7800995c2bcb/example/example.jsx))
 
 ```js
-<RadioGroup name="fruit"selectedValue={this.state.selectedValue} onChange={this.handleChange}>
+<RadioGroup name="fruit" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
   {Radio => (
     <div>
       <Radio value="apple" />Apple
@@ -41,9 +45,6 @@ Exposes 3 optional props:
 
 #### &lt;Radio />
 (Since you're getting that as the argument of your children function, you could have named it anything you wanted really.) Any prop you pass onto it will be transferred to the actual `input` under the hood.
-
-## Install
-(Coming soon).
 
 ## License
 
