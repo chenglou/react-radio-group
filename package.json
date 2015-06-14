@@ -4,7 +4,7 @@
   "description": "Better radio buttons.",
   "main": "index.js",
   "scripts": {
-    "example": "npm run build && webpack -w -d",
+    "example": "npm run build && webpack -d",
     "build": "babel index.jsx --out-dir=lib",
     "prerelease": "npm run build"
   },
@@ -12,6 +12,13 @@
     "type": "git",
     "url": "https://github.com/chenglou/react-radio-group.git"
   },
+  "keywords": [
+    "facebook",
+    "react",
+    "radio",
+    "radio-group",
+    "react-component"
+  ],
   "devDependencies": {
     "babel": "^5.5.8",
     "babel-core": "^5.2.17",

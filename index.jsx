@@ -27,10 +27,10 @@ let RadioGroup = React.createClass({
   },
 
   render: function() {
-    let {name, selectedValue, onChange} = this.props;
+    let {name, selectedValue, onChange, children} = this.props;
     return (
       <div>
-        {this.props.children && this.props.children(radio(name, selectedValue, onChange))}
+        {children && children(radio(name, selectedValue, onChange))}
       </div>
     );
   }
