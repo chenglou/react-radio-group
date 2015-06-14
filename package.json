@@ -1,23 +1,25 @@
 {
   "name": "react-radio-group",
   "version": "1.0.0",
-  "description": "This is your average radios group:",
-  "main": "index.jsx",
+  "description": "Better radio buttons.",
+  "main": "lib/index.js",
   "scripts": {
-    "build": "webpack -w -d",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "example": "npm run build && webpack -w -d",
+    "build": "babel index.jsx --out-dir=lib",
+    "prerelease": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/chenglou/react-radio-group.git"
   },
   "devDependencies": {
+    "babel": "^5.5.8",
     "babel-core": "^5.2.17",
     "babel-loader": "^5.0.0",
     "webpack": "^1.8.11"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "chenglou",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/chenglou/react-radio-group/issues"
   },
