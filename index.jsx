@@ -1,6 +1,7 @@
 'use strict';
 
 let React = require('react');
+let p = React.PropTypes;
 
 function radio(name, selectedValue, onChange) {
   return React.createClass({
@@ -18,11 +19,18 @@ function radio(name, selectedValue, onChange) {
 }
 
 let RadioGroup = React.createClass({
+  propTypes: {
+    name: p.string,
+    selectedValue: p.oneOfType([p.string, p.number]),
+    onChange: p.func,
+    children: p.func,
+  },
+
   render: function() {
     let {name, selectedValue, onChange} = this.props;
     return (
       <div>
-        {this.props.children(radio(name, selectedValue, onChange))}
+        {this.props.children && this.props.children(radio(name, selectedValue, onChange))}
       </div>
     );
   }
