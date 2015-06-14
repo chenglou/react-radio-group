@@ -1,7 +1,7 @@
 'use strict';
 
 let React = require('react');
-var RadioGroup = require('../');
+let RadioGroup = require('../');
 
 let App = React.createClass({
   getInitialState: function() {
