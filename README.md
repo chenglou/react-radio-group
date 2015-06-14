@@ -33,15 +33,15 @@ Here's a better version (full example [here](https://github.com/chenglou/react-r
 </RadioGroup>
 ```
 
-Repetitive fields are either lifted onto the `RadioGroup` wrapper or automatically set on the `Radio` component, which is a simple wrapper around the radio `input`.
+Repetitive fields are either lifted onto the `RadioGroup` wrapper or already implicitly set on the `Radio` component, which is a simple wrapper around the radio `input`.
 
 ## Formal API
 #### &lt;RadioGroup />
-Exposes 3 optional props:
+Exposes [4 optional props](https://github.com/chenglou/react-radio-group/blob/7a9b0fb4c82dd70d09e01ca6dcc64a1194d7219d/index.jsx#L23-L26):
 - `name: String`: what you'd normally put on the radio inputs themselves.
 - `selectedValue: String | Number`: the currently selected value. This will be used to compare against the values on the `Radio` components to select the right one.
 - `onChange: Function`: will be passed the newly selected value.
-- `children: Function`: will be passed a `Radio` component, a thin wrapper around `input` some fields like `type`, `name` and `checked` already set.
+- `children: Function`: will be passed a `Radio` component (a thin wrapper around `input`) some fields like `type`, `name` and `checked` already set.
 
 #### &lt;Radio />
 (Since you're getting that as the argument of your children function, you could have named it anything you wanted really.) Any prop you pass onto it will be transferred to the actual `input` under the hood.
