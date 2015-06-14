@@ -17,6 +17,7 @@
     "react",
     "radio",
     "radio-group",
+    "component",
     "react-component"
   ],
   "devDependencies": {
@@ -25,13 +26,18 @@
     "babel-loader": "^5.0.0",
     "webpack": "^1.8.11"
   },
-  "author": "chenglou",
+  "author": "chenglou <chenglou92@gmail.com>",
+  "contributors": [{
+    "name": "Jamison Dance",
+    "email": "jergason@gmail.com",
+    "url": "http://jamisondance.com"
+  }],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/chenglou/react-radio-group/issues"
   },
   "homepage": "https://github.com/chenglou/react-radio-group",
   "peerDependencies": {
-    "react": ">=0.13.3"
+    "react": ">=0.13.0"
   }
 }

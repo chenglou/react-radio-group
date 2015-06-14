@@ -13,7 +13,7 @@ This is your average radio buttons group:
 A few problems:
 - Repetitive fields (`name`, `type`, `checked`, `onChange`).
 - Hard to set the checked value. You need to put e.g. `checked={'apple' === this.state.selectedFruitName}` on every input.
-- Hard to retrieve the value.
+- Hard to retrieve the selected value.
 
 Here's a better version (full example [here](https://github.com/chenglou/react-radio-group/blob/5019ce724e4bb8c9aca35c11c20f7800995c2bcb/example/example.jsx))
 
