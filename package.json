@@ -1,11 +1,11 @@
 {
   "name": "react-radio-group",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Better radio buttons.",
   "main": "index.js",
   "scripts": {
     "example": "npm run build && webpack -d",
-    "build": "babel index.jsx --out-dir=lib",
+    "build": "babel index.jsx --out-dir=lib --modules umd",
     "prerelease": "npm run build"
   },
   "repository": {

@@ -4,6 +4,9 @@
 npm install react-radio-group
 ```
 
+Then either `require('react-radio-group')` or add `node_modules/react-radio-group/lib/index.js` into your HTML file.
+
+## What This Solves
 This is your average radio buttons group:
 
 ```js
