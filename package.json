@@ -1,0 +1,28 @@
+{
+  "name": "react-radio-group",
+  "version": "1.0.0",
+  "description": "This is your average radios group:",
+  "main": "index.jsx",
+  "scripts": {
+    "build": "webpack -w -d",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chenglou/react-radio-group.git"
+  },
+  "devDependencies": {
+    "babel-core": "^5.2.17",
+    "babel-loader": "^5.0.0",
+    "webpack": "^1.8.11"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chenglou/react-radio-group/issues"
+  },
+  "homepage": "https://github.com/chenglou/react-radio-group",
+  "peerDependencies": {
+    "react": ">=0.13.3"
+  }
+}
