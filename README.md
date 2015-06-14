@@ -1,8 +1,8 @@
 # [React](http://facebook.github.io/react/)-radio-group
 
-This is your average radios group:
+This is your average radio buttons group:
 
-```html
+```js
 <form>
   <input type="radio" name="fruit" value="apple" />Apple
   <input type="radio" name="fruit" value="orange" />Orange
@@ -10,97 +10,40 @@ This is your average radios group:
 </form>
 ```
 
-Repetitive, hard to manipulate and easily desynchronized.
-Lift up `name`, give the group an initial checked value, and optionally remove the form tag:
+A few problems:
+- Repetitive fields (`name`, `type`, `checked`, `onChange`).
+- Hard to set the checked value. You need to put e.g. `checked={'apple' === this.state.selectedFruitName}` on every input.
+- Hard to retrieve the value.
 
-```html
-<RadioGroup name="fruit" value="orange">
-  <input type="radio" value="apple" />Apple
-  <input type="radio" value="orange" />Orange
-  <input type="radio" value="watermelon" />Watermelon
+Here's a better version (full example [here](https://github.com/chenglou/react-radio-group/blob/5019ce724e4bb8c9aca35c11c20f7800995c2bcb/example/example.jsx))
+
+```js
+<RadioGroup name="fruit"selectedValue={this.state.selectedValue} onChange={this.handleChange}>
+  {Radio => (
+    <div>
+      <Radio value="apple" />Apple
+      <Radio value="orange" />Orange
+      <Radio value="watermelon" />Watermelon
+    </div>
+  )}
 </RadioGroup>
 ```
 
-Listen for changes, get the new value as intuitively as possible:
+Repetitive fields are either lifted onto the `RadioGroup` wrapper or automatically set on the `Radio` component, which is a simple wrapper around the radio `input`.
 
-```html
-<RadioGroup name="fruit" value="orange" ref="fruitsGroup" onChange={this.handleChange}>
-// further...
+## Formal API
+#### &lt;RadioGroup />
+Exposes 3 optional props:
+- `name: String`: what you'd normally put on the radio inputs themselves.
+- `selectedValue: String | Number`: the currently selected value. This will be used to compare against the values on the `Radio` components to select the right one.
+- `onChange: Function`: will be passed the newly selected value.
+- `children: Function`: will be passed a `Radio` component, a thin wrapper around `input` some fields like `type`, `name` and `checked` already set.
 
-this.refs.fruitsGroup.getCheckedValue(); // => whatever's currently checked
-// handleChange is also passed the native onChange event, whose value
-// resides in event.target.value (see example below)
-```
-
-That's it for the API! See below for a complete example.
+#### &lt;Radio />
+(Since you're getting that as the argument of your children function, you could have named it anything you wanted really.) Any prop you pass onto it will be transferred to the actual `input` under the hood.
 
 ## Install
-
-```sh
-bower install react-radio-group
-```
-
-Simply drop the script somewhere on your page (after React of course):
-
-```html
-<script src="path/to/react-radio-group.js"></script>
-```
-
-## Example
-
-Demo's almost as long as the whole [source code](https://github.com/chenglou/react-radiogroup/blob/master/react-radiogroup.jsx).
-
-```html
-/**
-* @jsx React.DOM
-*/
-var Demo = React.createClass({
-  getInitialState: function() {
-    return {value: 'celery'};
-  },
-
-  componentDidMount: function() {
-    // change the selected radio to "Potato" in one second
-    setTimeout(function() {
-      this.setState({value: 'potato'});
-    }.bind(this), 1000);
-  },
-
-  render: function() {
-    // the radios can be arbitrarily deep. They will always be fetched and
-    // attached the `name` attribute correctly. `value` is optional
-    return (
-      <RadioGroup
-        name="veggy"
-        value={this.state.value}
-        ref="veggiesGroup"
-        onChange={this.handleChange}
-      >
-        <div>
-          <label>
-            <input type="radio" value="celery"/>Celery
-          </label>
-          <label>
-            <input type="radio" value="potato"/>Potato
-          </label>
-          <label>
-            <input type="radio" value="broccoli"/>Broccoli
-          </label>
-        </div>
-      </RadioGroup>
-    );
-  },
-
-  handleChange: function(event) {
-    // will return the currently selected radio's value, or null if none
-    // alternatively, use the passed parameter `event`
-    var selectedVeggy = this.refs.veggiesGroup.getCheckedValue();
-    var sameVeggy = event.target.value;
-  }
-});
-
-React.renderComponent(<Demo/>, document.body);
-```
+(Coming soon).
 
 ## License
 
