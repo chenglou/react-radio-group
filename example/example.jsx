@@ -1,7 +1,7 @@
 'use strict';
 
-let React = require('react');
-let RadioGroup = require('../');
+import React from 'react';
+import RadioGroup from '../index.jsx';
 
 let App = React.createClass({
   getInitialState: function() {

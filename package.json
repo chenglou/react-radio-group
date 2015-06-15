@@ -4,8 +4,8 @@
   "description": "Better radio buttons.",
   "main": "index.js",
   "scripts": {
-    "example": "npm run build && webpack -d",
-    "build": "babel index.jsx --out-dir=lib --modules umd",
+    "example": "webpack -w -d",
+    "build": "babel index.jsx --out-dir=lib --modules umd --module-id RadioGroup",
     "prerelease": "npm run build"
   },
   "repository": {

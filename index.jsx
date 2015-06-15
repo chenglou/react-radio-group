@@ -1,7 +1,6 @@
 'use strict';
 
-let React = require('react');
-let p = React.PropTypes;
+import React, {PropTypes} from 'react';
 
 function radio(name, selectedValue, onChange) {
   return React.createClass({
@@ -18,12 +17,12 @@ function radio(name, selectedValue, onChange) {
   });
 }
 
-let RadioGroup = React.createClass({
+export default React.createClass({
   propTypes: {
-    name: p.string,
-    selectedValue: p.oneOfType([p.string, p.number]),
-    onChange: p.func,
-    children: p.func,
+    name: PropTypes.string,
+    selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    onChange: PropTypes.func,
+    children: PropTypes.func,
   },
 
   render: function() {
@@ -35,5 +34,3 @@ let RadioGroup = React.createClass({
     );
   }
 });
-
-module.exports = RadioGroup;
