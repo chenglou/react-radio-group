@@ -1,21 +1,30 @@
-'use strict';
-
 import React, {PropTypes} from 'react';
+import memoize from 'lodash.memoize';
 
-function radio(name, selectedValue, onChange) {
+
+const radio = memoize(({name, selectedValue, onChange, callback}) => {
   return React.createClass({
-    render: function() {
+    getInitialState() {
+      return {name, selectedValue, onChange};
+    },
+
+    componentWillMount() {
+      callback(newState => this.setState(newState));
+    },
+
+    render() {
       return (
         <input
           {...this.props}
           type="radio"
-          name={name}
-          checked={this.props.value === selectedValue}
-          onChange={onChange.bind(null, this.props.value)} />
+          name={this.state.name}
+          checked={this.props.value === this.state.selectedValue}
+          onChange={() => this.state.onChange(this.props.value)} />
       );
     }
   });
-}
+});
+
 
 export default React.createClass({
   propTypes: {
@@ -25,11 +34,24 @@ export default React.createClass({
     children: PropTypes.func,
   },
 
-  render: function() {
-    let {name, selectedValue, onChange, children} = this.props;
+  componentWillMount() {
+    this.callbacks = [];
+  },
+
+  componentWillUpdate({name, selectedValue, onChange}) {
+    if (this.callbacks.length) {
+      this.callbacks.forEach(func => func({name, selectedValue, onChange}));
+    }
+  },
+
+  render() {
+    const {name, selectedValue, onChange, children} = this.props;
     return (
       <div>
-        {children && children(radio(name, selectedValue, onChange))}
+        {children && children(radio({
+          name, selectedValue, onChange,
+          callback: func => this.callbacks.push(func)
+        }))}
       </div>
     );
   }

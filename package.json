@@ -27,11 +27,13 @@
     "webpack": "^1.8.11"
   },
   "author": "chenglou <chenglou92@gmail.com>",
-  "contributors": [{
-    "name": "Jamison Dance",
-    "email": "jergason@gmail.com",
-    "url": "http://jamisondance.com"
-  }],
+  "contributors": [
+    {
+      "name": "Jamison Dance",
+      "email": "jergason@gmail.com",
+      "url": "http://jamisondance.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/chenglou/react-radio-group/issues"
@@ -39,5 +41,8 @@
   "homepage": "https://github.com/chenglou/react-radio-group",
   "peerDependencies": {
     "react": ">=0.13.0"
+  },
+  "dependencies": {
+    "lodash.memoize": "^3.0.4"
   }
 }
