@@ -1,23 +1,19 @@
-'use strict';
-
 import React, {PropTypes} from 'react';
 
-function radio(name, selectedValue, onChange) {
-  return React.createClass({
-    render: function() {
-      return (
-        <input
-          {...this.props}
-          type="radio"
-          name={name}
-          checked={this.props.value === selectedValue}
-          onChange={onChange.bind(null, this.props.value)} />
-      );
-    }
-  });
-}
+const Radio = React.createClass({
+  render() {
+    return (
+      <input
+        {...this.props}
+        type="radio"
+        name={this.props.name}
+        checked={this.props.value === this.props.selectedValue}
+        onChange={() => this.props.onChange(this.props.value)} />
+    );
+  }
+});
 
-export default React.createClass({
+const RadioGroup = React.createClass({
   propTypes: {
     name: PropTypes.string,
     selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -25,12 +21,14 @@ export default React.createClass({
     children: PropTypes.func,
   },
 
-  render: function() {
-    let {name, selectedValue, onChange, children} = this.props;
+  render: function () {
+    const {name, selectedValue, onChange, children} = this.props;
     return (
       <div>
-        {children && children(radio(name, selectedValue, onChange))}
+        {children && children(props => <Radio {...{name, selectedValue, onChange}} {...props} />)}
       </div>
     );
   }
 });
+
+export default RadioGroup;
