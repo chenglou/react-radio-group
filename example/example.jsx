@@ -1,38 +1,36 @@
-'use strict';
-
 import React from 'react';
 import RadioGroup from '../index.jsx';
 
-let App = React.createClass({
-  getInitialState: function() {
+const App = React.createClass({
+  getInitialState: function () {
     return {
       selectedValue: 'apple',
     };
   },
 
-  handleChange: function(value) {
+  handleChange: function (value) {
     this.setState({
       selectedValue: value,
     });
   },
 
-  render: function() {
+  render: function () {
     return (
       <div>
         <RadioGroup
           name="fruit"
           selectedValue={this.state.selectedValue}
           onChange={this.handleChange}>
-          {Radio => (
+          {radio => (
             <div>
               <label>
-                <Radio value="apple" />Apple
+                {radio({value: 'apple'})}Apple
               </label>
               <label>
-                <Radio value="orange" />Orange
+                {radio({value: 'orange'})}Orange
               </label>
               <label>
-                <Radio value="watermelon" />Watermelon
+                {radio({value: 'watermelon'})}Watermelon
               </label>
             </div>
           )}
