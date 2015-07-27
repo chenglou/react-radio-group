@@ -1,5 +1,3 @@
-'use strict';
-
 import React, {PropTypes} from 'react';
 
 function radio(name, selectedValue, onChange) {
