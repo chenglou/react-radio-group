@@ -1,3 +1,6 @@
+### 2.1.0 (July 26th 2015)
+- Library now no longer wraps your children function return with a `div`. It now checks that you return a single component (or `null`) from the function. #18
+
 ### 2.0.2 (June 14th 2015)
 - Make the library work with browser globals.
 
