@@ -20,15 +20,12 @@ export default React.createClass({
     name: PropTypes.string,
     selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func,
-    children: PropTypes.func,
+    children: PropTypes.func.isRequired,
   },
 
   render: function() {
-    let {name, selectedValue, onChange, children} = this.props;
-    return (
-      <div>
-        {children && children(radio(name, selectedValue, onChange))}
-      </div>
-    );
+    const {name, selectedValue, onChange, children} = this.props;
+    const renderedChildren = children(radio(name, selectedValue, onChange));
+    return renderedChildren && React.Children.only(renderedChildren);
   }
 });
