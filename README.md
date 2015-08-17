@@ -42,7 +42,7 @@ Repetitive fields are either lifted onto the `RadioGroup` wrapper or already imp
 #### &lt;RadioGroup />
 Exposes [4 optional props](https://github.com/chenglou/react-radio-group/blob/7a9b0fb4c82dd70d09e01ca6dcc64a1194d7219d/index.jsx#L23-L26):
 - `name: String`: what you'd normally put on the radio inputs themselves.
-- `selectedValue: String | Number`: the currently selected value. This will be used to compare against the values on the `Radio` components to select the right one.
+- `selectedValue: String | Number | Boolean`: the currently selected value. This will be used to compare against the values on the `Radio` components to select the right one.
 - `onChange: Function`: will be passed the newly selected value.
 - `children: Function`: will be passed a `Radio` component (a thin wrapper around `input`) some fields like `type`, `name` and `checked` already set.
 

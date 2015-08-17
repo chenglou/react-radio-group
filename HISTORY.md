@@ -1,3 +1,6 @@
+### 2.1.1 (August 17th 2015)
+- Allow `selectedValue`'s type to be a boolean.
+
 ### 2.1.0 (July 26th 2015)
 - Library now no longer wraps your children function return with a `div`. It now checks that you return a single component (or `null`) from the function. #18
 

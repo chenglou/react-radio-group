@@ -18,7 +18,11 @@ function radio(name, selectedValue, onChange) {
 export default React.createClass({
   propTypes: {
     name: PropTypes.string,
-    selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    selectedValue: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.bool,
+    ]),
     onChange: PropTypes.func,
     children: PropTypes.func.isRequired,
   },
