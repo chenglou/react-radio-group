@@ -3,13 +3,20 @@ import React, {PropTypes} from 'react';
 function radio(name, selectedValue, onChange) {
   return React.createClass({
     render: function() {
+      const optional = {};
+      if(typeof selectedValue !== 'undefined') {
+        optional.checked = (this.props.value === selectedValue);
+      }
+      if(typeof onChange === 'function') {
+        optional.onChange = onChange.bind(null, this.props.value);
+      }
+
       return (
         <input
           {...this.props}
           type="radio"
           name={name}
-          checked={this.props.value === selectedValue}
-          onChange={onChange.bind(null, this.props.value)} />
+          {...optional} />
       );
     }
   });
