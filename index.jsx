@@ -1,27 +1,15 @@
 import React, {PropTypes} from 'react';
 
-function radio(kwargs) {
-
+function radio(name, selectedValue, onChange) {
   return React.createClass({
     render: function() {
-      const name = kwargs.name;
-
-      // We only want to assign these attribute to the <input />
-      // elements if they were specified explicitly.
-      const optional = {};
-      if(kwargs.hasOwnProperty("selectedValue")) {
-        optional.checked = (this.props.value === kwargs.selectedValue);
-      }
-      if(kwargs.hasOwnProperty("onChange")) {
-        optional.onChange = kwargs.onChange.bind(null, this.props.value);
-      }
-
       return (
         <input
           {...this.props}
           type="radio"
           name={name}
-          {...optional} />
+          checked={this.props.value === selectedValue}
+          onChange={onChange.bind(null, this.props.value)} />
       );
     }
   });
@@ -40,7 +28,8 @@ export default React.createClass({
   },
 
   render: function() {
-    const renderedChildren = this.props.children(radio(this.props));
+    const {name, selectedValue, onChange, children} = this.props;
+    const renderedChildren = children(radio(name, selectedValue, onChange));
     return renderedChildren && React.Children.only(renderedChildren);
   }
 });
