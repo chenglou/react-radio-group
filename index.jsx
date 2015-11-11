@@ -4,7 +4,7 @@ function radio(name, selectedValue, onChange) {
   return React.createClass({
     render: function() {
       const optional = {};
-      if(typeof selectedValue !== 'undefined') {
+      if(selectedValue !== undefined) {
         optional.checked = (this.props.value === selectedValue);
       }
       if(typeof onChange === 'function') {
