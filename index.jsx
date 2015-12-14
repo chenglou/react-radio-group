@@ -23,6 +23,13 @@ function radio(name, selectedValue, onChange) {
 }
 
 export default React.createClass({
+  getValueLink: function(props) {
+    return props.valueLink || {
+      value: props.value,
+      requestChange: props.onChange
+    };	
+  },
+  
   propTypes: {
     name: PropTypes.string,
     selectedValue: PropTypes.oneOfType([
@@ -35,7 +42,10 @@ export default React.createClass({
   },
 
   render: function() {
-    const {name, selectedValue, onChange, children} = this.props;
+    const {name, children} = this.props;
+    const valueLink = this.getValueLink(this.props);
+    const onChange = this.getValueLink(this.props).requestChange;
+    const selectedValue = this.getValueLink(this.props).value;
     const renderedChildren = children(radio(name, selectedValue, onChange));
     return renderedChildren && React.Children.only(renderedChildren);
   }
