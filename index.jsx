@@ -23,6 +23,8 @@ function radio(name, selectedValue, onChange) {
 }
 
 export default React.createClass({
+  displayName: 'RadioGroup',
+  
   propTypes: {
     name: PropTypes.string,
     selectedValue: PropTypes.oneOfType([
