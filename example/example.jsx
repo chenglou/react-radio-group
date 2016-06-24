@@ -1,7 +1,8 @@
 'use strict';
 
 import React from 'react';
-import RadioGroup from '../index.jsx';
+import ReactDOM from 'react-dom';
+import {RadioGroup, Radio} from '../index.jsx';
 
 let App = React.createClass({
   getInitialState() {
@@ -18,22 +19,18 @@ let App = React.createClass({
         name="fruit"
         selectedValue={this.state.selectedValue}
         onChange={this.handleChange}>
-        {Radio => (
-          <div>
-            <label>
-              <Radio value="apple" />Apple
-            </label>
-            <label>
-              <Radio value="orange" />Orange
-            </label>
-            <label>
-              <Radio value="watermelon" />Watermelon
-            </label>
-          </div>
-        )}
+        <label>
+          <Radio value="apple" />Apple
+        </label>
+        <label>
+          <Radio value="orange" />Orange
+        </label>
+        <label>
+          <Radio value="watermelon" />Watermelon
+        </label>
       </RadioGroup>
     );
   }
 });
 
-React.render(<App />, document.getElementById('content'));
+ReactDOM.render(<App />, document.getElementById('content'));
