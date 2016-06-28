@@ -39,11 +39,17 @@ export const RadioGroup = React.createClass({
     ]),
     onChange: PropTypes.func,
     children: PropTypes.node.isRequired,
-    comp: PropTypes.oneOfType([
+    Component: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.func,
       PropTypes.object,
     ])
+  },
+
+  getDefaultProps: function() {
+    return {
+      Component: "div"
+    };
   },
 
   childContextTypes: {
@@ -60,7 +66,7 @@ export const RadioGroup = React.createClass({
   },
 
   render: function() {
-    const {comp: Comp = "div", name, selectedValue, onChange, children, ...rest} = this.props;
-    return <Comp {...rest}>{children}</Comp>;
+    const {Component, name, selectedValue, onChange, children, ...rest} = this.props;
+    return <Component {...rest}>{children}</Component>;
   }
 });
