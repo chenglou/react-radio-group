@@ -4,7 +4,7 @@
 npm install react-radio-group
 ```
 
-Then either `require('react-radio-group')` or add `node_modules/react-radio-group/lib/index.js` into your HTML file (exports the `RadioGroup` global).
+Then either `require('react-radio-group')` or add `node_modules/react-radio-group/lib/index.js` into your HTML file (exports the `RadioGroup` and `Radio` global).
 
 ## What This Solves
 This is your average radio buttons group:
@@ -26,13 +26,9 @@ Here's a better version (full example [here](https://github.com/chenglou/react-r
 
 ```js
 <RadioGroup name="fruit" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
-  {Radio => (
-    <div>
-      <Radio value="apple" />Apple
-      <Radio value="orange" />Orange
-      <Radio value="watermelon" />Watermelon
-    </div>
-  )}
+  <Radio value="apple" />Apple
+  <Radio value="orange" />Orange
+  <Radio value="watermelon" />Watermelon
 </RadioGroup>
 ```
 
@@ -40,14 +36,15 @@ Repetitive fields are either lifted onto the `RadioGroup` wrapper or already imp
 
 ## Formal API
 #### &lt;RadioGroup />
-Exposes [4 optional props](https://github.com/chenglou/react-radio-group/blob/7a9b0fb4c82dd70d09e01ca6dcc64a1194d7219d/index.jsx#L23-L26):
+Exposes [5 optional props](https://github.com/chenglou/react-radio-group/blob/7a9b0fb4c82dd70d09e01ca6dcc64a1194d7219d/index.jsx#L23-L26):
 - `name: String`: what you'd normally put on the radio inputs themselves.
 - `selectedValue: String | Number | Boolean`: the currently selected value. This will be used to compare against the values on the `Radio` components to select the right one.
 - `onChange: Function`: will be passed the newly selected value.
-- `children: Function`: will be passed a `Radio` component (a thin wrapper around `input`) some fields like `type`, `name` and `checked` already set.
+- `Component: String | React Component`: defaults to `"div"`, defines what tag or component is used for rendering the `RadioGroup`
+- `children: Node`: define your `Radio`s and any other components. Each `Radio` component (a thin wrapper around `input`) within a `RadioGroup` will have some fields like `type`, `name` and `checked` prefilled.
 
 #### &lt;Radio />
-(Since you're getting that as the argument of your children function, you could have named it anything you wanted really.) Any prop you pass onto it will be transferred to the actual `input` under the hood.
+Any prop you pass onto it will be transferred to the actual `input` under the hood. `Radio` components cannot be used outside a `RadioGroup`
 
 ## License
 

@@ -40,6 +40,6 @@
   },
   "homepage": "https://github.com/chenglou/react-radio-group",
   "peerDependencies": {
-    "react": ">=0.13.0"
+    "react": ">=0.14.0"
   }
 }
