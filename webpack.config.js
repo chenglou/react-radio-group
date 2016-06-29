@@ -1,11 +1,18 @@
 module.exports = {
-  entry: {
-    example: './example/example.jsx',
-  },
   output: {
-    path: './example',
-    filename: 'all.js',
+    library: 'RadioGroup',
+    libraryTarget: 'umd'
   },
+  externals: [
+    {
+      react: {
+        root: 'React',
+        commonjs2: 'react',
+        commonjs: 'react',
+        amd: 'react'
+      }
+    }
+  ],
   module: {
     loaders: [
       {test: /\.jsx?$/, exclude: /build|node_modules/, loader: 'babel-loader?stage=0'},

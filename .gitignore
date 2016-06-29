@@ -3,4 +3,5 @@ index.html
 out
 node_modules
 lib
+umd
 example/all*
