@@ -22,7 +22,7 @@ A few problems:
 - Hard to set the checked value. You need to put e.g. `checked={'apple' === this.state.selectedFruitName}` on every input.
 - Hard to retrieve the selected value.
 
-Here's a better version (full example [here](https://github.com/chenglou/react-radio-group/blob/5019ce724e4bb8c9aca35c11c20f7800995c2bcb/example/example.jsx))
+Here's a better version (full example [here](https://github.com/chenglou/react-radio-group/blob/67a2bcdc7f3d0c8cb4d7762f82558d75c9592ea9/example/example.jsx))
 
 ```js
 <RadioGroup name="fruit" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
@@ -36,7 +36,7 @@ Repetitive fields are either lifted onto the `RadioGroup` wrapper or already imp
 
 ## Formal API
 #### &lt;RadioGroup />
-Exposes [5 optional props](https://github.com/chenglou/react-radio-group/blob/7a9b0fb4c82dd70d09e01ca6dcc64a1194d7219d/index.jsx#L23-L26):
+Exposes [5 optional props](https://github.com/chenglou/react-radio-group/blob/67a2bcdc7f3d0c8cb4d7762f82558d75c9592ea9/index.jsx#L34-L46):
 - `name: String`: what you'd normally put on the radio inputs themselves.
 - `selectedValue: String | Number | Boolean`: the currently selected value. This will be used to compare against the values on the `Radio` components to select the right one.
 - `onChange: Function`: will be passed the newly selected value.
