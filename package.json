@@ -1,13 +1,12 @@
 {
-  "name": "react-radio-group",
-  "version": "3.0.1",
-  "description": "Better radio buttons.",
-  "main": "lib/index.js",
+  "name": "react-custom-radio",
+  "version": "1.0.3",
+  "description": "Better radio buttons (fork)",
+  "main": "umd/index.js",
   "scripts": {
     "example": "./node_modules/.bin/webpack -w -d --config ./example/webpack.config.js --progress --color",
     "build-umd": "./node_modules/.bin/webpack ./src/index.jsx umd/index.js",
-    "build-cjs": "./node_modules/.bin/babel ./src/index.jsx -d lib",
-    "prerelease": "npm run build-umd && npm run build-cjs"
+    "prerelease": "npm run build-umd"
   },
   "repository": {
     "type": "git",
@@ -34,7 +33,7 @@
     "style-loader": "^0.13.2",
     "webpack": "^1.8.11"
   },
-  "author": "chenglou <chenglou92@gmail.com>",
+  "author": "horat1us <reclamme@gmail.com>",
   "contributors": [
     {
       "name": "Jamison Dance",
@@ -49,11 +48,17 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chenglou/react-radio-group/issues"
+    "url": "https://github.com/Horat1us/react-radio-group/issues"
   },
-  "homepage": "https://github.com/chenglou/react-radio-group",
+  "homepage": "https://github.com/Horat1us/react-radio-group",
   "peerDependencies": {
     "react-dom": "^15.4.2",
     "react": "^15.4.2"
-  }
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "files": [
+    "umd/index.js"
+  ]
 }
