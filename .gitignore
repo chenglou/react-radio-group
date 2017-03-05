@@ -1,7 +1,7 @@
 .DS_Store
-index.html
 out
 node_modules
-lib
 umd
-example/all*
+lib
+.idea
+npm-debug.log

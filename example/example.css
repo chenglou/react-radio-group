@@ -1,0 +1,32 @@
+button {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    padding: 0.5em 2em;
+    font-family: "Bitter", serif;
+    line-height: 1.8;
+    appearance: none;
+    box-shadow: none;
+    border-radius: 0;
+    color: #fff;
+    background-color: #6496c8;
+    text-shadow: -1px 1px #417cb8;
+    border: none;
+}
+
+button:focus {
+    outline: none
+}
+
+button:hover {
+    background-color: #346392;
+    text-shadow: -1px 1px #27496d;
+}
+
+button.active {
+    background-color: #27496d;
+    text-shadow: -1px 1px #193047;
+}
+
+#content h4 {
+    margin: 0.5em;
+}
