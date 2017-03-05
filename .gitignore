@@ -5,3 +5,5 @@ node_modules
 lib
 umd
 example/all*
+.idea
+npm-debug.log

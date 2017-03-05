@@ -4,14 +4,14 @@
   "description": "Better radio buttons.",
   "main": "lib/index.js",
   "scripts": {
-    "example": "webpack -w -d --config example/webpack.config.js example/example.jsx example/all.js",
-    "build-umd": "webpack index.jsx umd/index.js",
-    "build-cjs": "babel index.jsx -d lib",
+    "example": "./node_modules/.bin/webpack -w -d --config ./example/webpack.config.js --progress --color",
+    "build-umd": "./node_modules/.bin/webpack ./src/index.jsx umd/index.js",
+    "build-cjs": "./node_modules/.bin/babel ./src/index.jsx -d lib",
     "prerelease": "npm run build-umd && npm run build-cjs"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chenglou/react-radio-group.git"
+    "url": "https://github.com/Horat1us/react-radio-group"
   },
   "keywords": [
     "facebook",
@@ -19,12 +19,19 @@
     "radio",
     "radio-group",
     "component",
-    "react-component"
+    "react-component",
+    "radio-button"
   ],
   "devDependencies": {
     "babel": "^5.5.8",
-    "babel-core": "^5.2.17",
-    "babel-loader": "^5.0.0",
+    "babel-core": "^5.8.38",
+    "babel-loader": "^5.4.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "css-loader": "^0.26.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "style-loader": "^0.13.2",
     "webpack": "^1.8.11"
   },
   "author": "chenglou <chenglou92@gmail.com>",
@@ -33,6 +40,11 @@
       "name": "Jamison Dance",
       "email": "jergason@gmail.com",
       "url": "http://jamisondance.com"
+    },
+    {
+      "name": "Alexander Letnikow",
+      "email": "reclamme@gmail.com",
+      "url": "https://horatius.pro"
     }
   ],
   "license": "MIT",
@@ -41,6 +53,7 @@
   },
   "homepage": "https://github.com/chenglou/react-radio-group",
   "peerDependencies": {
-    "react": ">=0.14.0"
+    "react-dom": "^15.4.2",
+    "react": "^15.4.2"
   }
 }
