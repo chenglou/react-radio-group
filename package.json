@@ -1,8 +1,8 @@
 {
   "name": "react-custom-radio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Better radio buttons (fork)",
-  "main": "lib/index.js",
+  "main": "lib/src/index.js",
   "scripts": {
     "example": "./node_modules/.bin/webpack -w -d --config ./example/webpack.config.js --progress --color",
     "build-umd": "./node_modules/.bin/webpack ./src/index.jsx umd/index.js",
@@ -55,5 +55,12 @@
   "peerDependencies": {
     "react-dom": "^15.4.2",
     "react": "^15.4.2"
-  }
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "files": [
+    "lib/src/index.js",
+    "umd/index.js"
+  ]
 }
