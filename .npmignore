@@ -1,3 +1,4 @@
 src
 example
-index.jsx
+node_modules
+npm-debug.log

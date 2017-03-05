@@ -1,5 +1,7 @@
 # [React](http://facebook.github.io/react/)-radio-group
 
+This is fork of [this awesome repository](https://github.com/chenglou/react-radio-group).
+
 ```
 npm install react-radio-group
 ```
