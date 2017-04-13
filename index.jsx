@@ -1,10 +1,11 @@
-import React, {PropTypes} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 export const Radio = React.createClass({
   displayName: 'Radio',
 
   contextTypes: {
-    radioGroup: React.PropTypes.object
+    radioGroup: PropTypes.object
   },
 
   render: function() {
@@ -53,7 +54,7 @@ export const RadioGroup = React.createClass({
   },
 
   childContextTypes: {
-    radioGroup: React.PropTypes.object
+    radioGroup: PropTypes.object
   },
 
   getChildContext: function() {

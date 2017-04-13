@@ -25,6 +25,7 @@
     "babel": "^5.5.8",
     "babel-core": "^5.2.17",
     "babel-loader": "^5.0.0",
+    "prop-types": "^15.5.8",
     "webpack": "^1.8.11"
   },
   "author": "chenglou <chenglou92@gmail.com>",
