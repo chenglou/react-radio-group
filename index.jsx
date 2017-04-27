@@ -1,10 +1,11 @@
-import React, {PropTypes} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 export class Radio extends React.Component {
   static displayName = 'Radio';
 
   static contextTypes = {
-    radioGroup: React.PropTypes.object
+    radioGroup: PropTypes.object
   };
 
   render() {
@@ -51,7 +52,7 @@ export class RadioGroup extends React.Component {
   };
 
   static childContextTypes = {
-    radioGroup: React.PropTypes.object
+    radioGroup: PropTypes.object
   };
 
   getChildContext() {
