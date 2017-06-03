@@ -1,6 +1,6 @@
 {
   "name": "react-radio-group",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Better radio buttons.",
   "main": "lib/index.js",
   "scripts": {
