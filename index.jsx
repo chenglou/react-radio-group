@@ -2,12 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 export class Radio extends React.Component {
-  static displayName = 'Radio';
-
-  static contextTypes = {
-    radioGroup: PropTypes.object
-  };
-
   render() {
     const {name, selectedValue, onChange} = this.context.radioGroup;
     const optional = {};
@@ -26,35 +20,13 @@ export class Radio extends React.Component {
         {...optional} />
     );
   }
-}
+};
+
+Radio.contextTypes = {
+  radioGroup: PropTypes.object
+};
 
 export class RadioGroup extends React.Component {
-  static displayName = 'RadioGroup';
-
-  static propTypes = {
-    name: PropTypes.string,
-    selectedValue: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-      PropTypes.bool,
-    ]),
-    onChange: PropTypes.func,
-    children: PropTypes.node.isRequired,
-    Component: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.func,
-      PropTypes.object,
-    ])
-  };
-
-  static defaultProps = {
-    Component: "div"
-  };
-
-  static childContextTypes = {
-    radioGroup: PropTypes.object
-  };
-
   getChildContext() {
     const {name, selectedValue, onChange} = this.props;
     return {
@@ -68,4 +40,28 @@ export class RadioGroup extends React.Component {
     const {Component, name, selectedValue, onChange, children, ...rest} = this.props;
     return <Component {...rest}>{children}</Component>;
   }
-}
+};
+
+RadioGroup.defaultProps = {
+  Component: "div"
+};
+
+RadioGroup.propTypes = {
+  name: PropTypes.string,
+  selectedValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.bool,
+  ]),
+  onChange: PropTypes.func,
+  children: PropTypes.node.isRequired,
+  Component: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.object,
+  ])
+};
+
+RadioGroup.childContextTypes = {
+  radioGroup: PropTypes.object
+};
