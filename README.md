@@ -42,6 +42,7 @@ Exposes [5 optional props](https://github.com/chenglou/react-radio-group/blob/67
 - `onChange: Function`: will be passed the newly selected value.
 - `Component: String | React Component`: defaults to `"div"`, defines what tag or component is used for rendering the `RadioGroup`
 - `children: Node`: define your `Radio`s and any other components. Each `Radio` component (a thin wrapper around `input`) within a `RadioGroup` will have some fields like `type`, `name` and `checked` prefilled.
+- `isrequired`: setting this property will add the `required` attribute to all the `<input>` elements within the `RadioGroup`. Ensuring that one is selected when a form is submitted. 
 
 #### &lt;Radio />
 Any prop you pass onto it will be transferred to the actual `input` under the hood. `Radio` components cannot be used outside a `RadioGroup`
