@@ -45,8 +45,8 @@ Exposes [5 optional props](https://github.com/chenglou/react-radio-group/blob/67
 
 #### &lt;Radio />
 Exposes the following additional props:
-- `innerRef: Function`: accepts a [ref function](https://reactjs.org/docs/refs-and-the-dom.html#adding-a-ref-to-a-dom-element) to set a reference to the underlying radio input.
-Any prop you pass onto it will be transferred to the actual `input` under the hood. `Radio` components cannot be used outside a `RadioGroup`
+- `innerRef: Function`: accepts a [ref function](https://reactjs.org/docs/refs-and-the-dom.html#adding-a-ref-to-a-dom-element) to set a reference to the underlying radio `input`.
+Any other prop you pass onto it will be transferred to the actual `input` under the hood. `Radio` components cannot be used outside a `RadioGroup`
 
 ## License
 
