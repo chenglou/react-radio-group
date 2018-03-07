@@ -15,6 +15,8 @@ export class Radio extends React.Component {
     return (
       <input
         {...this.props}
+        role="radio"
+        aria-checked={optional.checked}
         type="radio"
         name={name}
         {...optional} />
@@ -38,7 +40,7 @@ export class RadioGroup extends React.Component {
 
   render() {
     const {Component, name, selectedValue, onChange, children, ...rest} = this.props;
-    return <Component {...rest}>{children}</Component>;
+    return <Component role="radiogroup" {...rest}>{children}</Component>;
   }
 };
 
