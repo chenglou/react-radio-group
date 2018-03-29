@@ -1,3 +1,6 @@
+### 3.0.3 (March 29th 2018)
+- React 16 support
+
 ### 3.0.0 (June 29th 2016)
 - Completely new API: no more function-as-a-child. See Readme for the details
 - No new DOM Nodes are created anymore when component gets rerendered.
