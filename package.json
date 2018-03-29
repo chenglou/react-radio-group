@@ -47,6 +47,6 @@
   "homepage": "https://github.com/chenglou/react-radio-group",
   "peerDependencies": {
     "react": ">=0.14.0",
-    "react-dom": "^15.5.4"
+    "react-dom": ">=15.5.4"
   }
 }
