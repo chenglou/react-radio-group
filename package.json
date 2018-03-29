@@ -29,7 +29,7 @@
     "babel-core": "^5.2.17",
     "babel-loader": "^5.0.0",
     "react": ">=0.14.0",
-    "react-dom": "^15.5.4",
+    "react-dom": ">=15.5.4",
     "webpack": "^1.8.11"
   },
   "author": "chenglou <chenglou92@gmail.com>",
