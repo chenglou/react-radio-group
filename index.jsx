@@ -4,6 +4,7 @@ import React from 'react';
 export class Radio extends React.Component {
   render() {
     const {name, selectedValue, onChange} = this.context.radioGroup;
+    const {innerRef, ...props } = this.props;
     const optional = {};
     if(selectedValue !== undefined) {
       optional.checked = (this.props.value === selectedValue);
@@ -11,10 +12,12 @@ export class Radio extends React.Component {
     if(typeof onChange === 'function') {
       optional.onChange = onChange.bind(null, this.props.value);
     }
-
+    if(typeof innerRef === 'function') {
+      optional.ref = innerRef
+    }
     return (
       <input
-        {...this.props}
+        {...props}
         type="radio"
         name={name}
         {...optional} />
