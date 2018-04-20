@@ -27,6 +27,14 @@ Radio.defaultProps = {
   Component: "input"
 };
 
+Radio.propTypes = {
+  Component: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.object,
+  ])
+};
+
 Radio.contextTypes = {
   radioGroup: PropTypes.object
 };
