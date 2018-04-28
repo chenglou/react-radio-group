@@ -4,14 +4,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {RadioGroup, Radio} from '../index.jsx';
 
-let App = React.createClass({
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {selectedValue: 'apple'};
+  }
+
   getInitialState() {
     return {selectedValue: 'apple'};
-  },
+  }
 
-  handleChange(value) {
+  handleChange = (value) => {
     this.setState({selectedValue: value});
-  },
+  }
 
   render() {
     return (
@@ -31,6 +36,6 @@ let App = React.createClass({
       </RadioGroup>
     );
   }
-});
+}
 
 ReactDOM.render(<App />, document.getElementById('content'));
