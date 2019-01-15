@@ -22,7 +22,7 @@ A few problems:
 - Hard to set the checked value. You need to put e.g. `checked={'apple' === this.state.selectedFruitName}` on every input.
 - Hard to retrieve the selected value.
 
-Here's a better version (full example [here](https://github.com/chenglou/react-radio-group/blob/67a2bcdc7f3d0c8cb4d7762f82558d75c9592ea9/example/example.jsx))
+Here's a better version ([live example here](https://codesandbox.io/s/72vmwmppy1)).
 
 ```js
 <RadioGroup name="fruit" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
