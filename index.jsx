@@ -3,13 +3,17 @@ import React from 'react';
 
 export class Radio extends React.Component {
   render() {
-    const {name, selectedValue, onChange} = this.context.radioGroup;
+    const {name, selectedValue, onChange, isrequired} = this.context.radioGroup;
     const optional = {};
     if(selectedValue !== undefined) {
       optional.checked = (this.props.value === selectedValue);
     }
     if(typeof onChange === 'function') {
       optional.onChange = onChange.bind(null, this.props.value);
+    }
+
+    if(isrequired) {
+      optional.required = 'required';
     }
 
     return (
@@ -30,10 +34,10 @@ Radio.contextTypes = {
 
 export class RadioGroup extends React.Component {
   getChildContext() {
-    const {name, selectedValue, onChange} = this.props;
+    const {name, selectedValue, onChange, isrequired} = this.props;
     return {
       radioGroup: {
-        name, selectedValue, onChange
+        name, selectedValue, onChange, isrequired
       }
     }
   }
@@ -55,6 +59,7 @@ RadioGroup.propTypes = {
     PropTypes.number,
     PropTypes.bool,
   ]),
+  isrequired: PropTypes.bool,
   onChange: PropTypes.func,
   children: PropTypes.node.isRequired,
   Component: PropTypes.oneOfType([
