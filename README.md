@@ -34,6 +34,12 @@ Here's a better version (full example [here](https://github.com/chenglou/react-r
 
 Repetitive fields are either lifted onto the `RadioGroup` wrapper or already implicitly set on the `Radio` component, which is a simple wrapper around the radio `input`.
 
+## CodeSandBox example
+
+Check out the implementation on [CodeSandBox](https://codesandbox.io/s/react-radio-group-example-7xhnz3)
+![React-radio-group](https://github.com/chenglou/react-radio-group/assets/24845008/4f22762d-1bbc-4bcf-8619-fb3ce5aca100)
+
+
 ## Formal API
 #### &lt;RadioGroup />
 Exposes [5 optional props](https://github.com/chenglou/react-radio-group/blob/67a2bcdc7f3d0c8cb4d7762f82558d75c9592ea9/index.jsx#L34-L46):
