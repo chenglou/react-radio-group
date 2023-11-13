@@ -37,6 +37,7 @@ Repetitive fields are either lifted onto the `RadioGroup` wrapper or already imp
 ## CodeSandBox example
 
 Check out the implementation on [CodeSandBox](https://codesandbox.io/s/react-radio-group-example-7xhnz3)
+
 ![React-radio-group](https://github.com/chenglou/react-radio-group/assets/24845008/4f22762d-1bbc-4bcf-8619-fb3ce5aca100)
 
 
